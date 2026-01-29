@@ -1,0 +1,5 @@
+.right-red-square {
+  width: 35%;         /* Defines the width of the square */
+  height: 75%;        /* Defines the height of the square */
+  background-color: red; /* Sets the background color to red */
+}

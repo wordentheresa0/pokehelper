@@ -71,3 +71,4 @@ export default defineConfig([
   },
 ])
 ```
+https://codepen.io/siliconunicorn/pen/VqoxXP
