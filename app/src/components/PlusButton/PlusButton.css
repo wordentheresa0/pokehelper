@@ -1,0 +1,24 @@
+.circle {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(44,108,128)
+}
+
+.horizontal-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 50%;
+  height: 12.5%;
+  left: 25%;
+  top: 43.75%;
+}
+
+.vertical-plus {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 12.5%;
+  height: 50%;
+  left: 43.75%;
+  top: 12.5%;
+}
