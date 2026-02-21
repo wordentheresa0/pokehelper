@@ -1,13 +1,15 @@
 .circle {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  background-color: rgb(44,108,128)
+  width: 140px;
+  height: 140px;
+  background-color: rgb(44, 108, 128);
+  margin: auto;
+  border: 5px solid rgb(15, 64, 97);
 }
 
 .horizontal-plus {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 50%;
   height: 12.5%;
   left: 25%;
@@ -16,9 +18,16 @@
 
 .vertical-plus {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 12.5%;
   height: 50%;
   left: 43.75%;
   top: 12.5%;
+}
+
+.circle:hover {
+  width: 150px;
+  height: 150px;
+  color: white;
+  cursor: pointer; /* Changes the cursor to a hand icon */
 }
