@@ -1,0 +1,11 @@
+.circle-container {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  background-color: rgb(44, 108, 128);
+  margin: auto;
+  border: 5px solid rgb(15, 64, 97);
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  display: flex;
+}
