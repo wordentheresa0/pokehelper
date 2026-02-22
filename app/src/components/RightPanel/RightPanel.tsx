@@ -38,7 +38,7 @@ export default function RightPanel() {
       </div>
 
       <Popup open={open} onClose={() => setOpen(false)} modal>
-        <SearchModal />
+        <SearchModal data={allPokemonArr}/>
       </Popup>
     </>
   );
