@@ -5,22 +5,26 @@ import "../PlusButton/PlusButton.css";
 import { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import SearchModal from "../SearchModal/SearchModal";
-import axios from "axios";
+import { getPokemonNameArray } from "../../api/PokemonAPICalls";
+import type { AllPokemonArray } from "../../models/AllPokemonArray";
 
 export default function RightPanel() {
+  const [allPokemonArr, setAllPokemonArr] = useState<AllPokemonArray>([]);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    getPokemon();
-  }, []);
+    const fetchPokemon = async () => {
+      try {
+        const data = await getPokemonNameArray();
+        setAllPokemonArr(data);
+      } catch (error) {
+        console.error("Failed to load Pokemon: ", error);
+      }
+    };
 
-  const getPokemon = async () => {
-    await axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=1500")
-      .then((response) => {
-        console.log(response.data);
-      });
-  };
+    fetchPokemon();
+    console.log(allPokemonArr);
+  }, []);
 
   return (
     <>
