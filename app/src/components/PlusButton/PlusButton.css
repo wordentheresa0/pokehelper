@@ -1,33 +1,35 @@
 .circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 50%;
   width: 140px;
   height: 140px;
   background-color: rgb(44, 108, 128);
   margin: auto;
   border: 5px solid rgb(15, 64, 97);
+  transition: transform 0.2s ease;
+}
+
+.horizontal-plus,
+.vertical-plus {
+  position: absolute;
+  background-color: #ffffff;
 }
 
 .horizontal-plus {
-  position: relative;
-  background-color: #ffffff;
   width: 50%;
-  height: 12.5%;
-  left: 25%;
-  top: 43.75%;
+  height: 12%;
 }
 
 .vertical-plus {
-  position: relative;
-  background-color: #ffffff;
-  width: 12.5%;
+  width: 12%;
   height: 50%;
-  left: 43.75%;
-  top: 12.5%;
 }
 
 .circle:hover {
-  width: 150px;
-  height: 150px;
-  color: white;
-  cursor: pointer; /* Changes the cursor to a hand icon */
+  transform: scale(1.08);
+  cursor: pointer;
 }
