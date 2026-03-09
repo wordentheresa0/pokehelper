@@ -1,9 +1,15 @@
 import "./PokemonCircle.css";
 
-export default function PokemonCircle() {
+interface PokemonCircleProps {
+  spriteUrl: string;
+}
+
+export default function PokemonCircle(props: PokemonCircleProps) {
   return (
     <div className="circle-container">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png" />
+      <img src={props.spriteUrl} />
     </div>
   );
 }
+
+// test url: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png

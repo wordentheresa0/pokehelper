@@ -1,13 +1,13 @@
 import axios from "axios";
-import type { AllPokemonArray } from "../models/AllPokemonArray";
+import type { AllPokemonResponseArray } from "../models/AllPokemonResponseArray";
 
-async function getPokemonNameArray(): Promise<AllPokemonArray> {
+async function getPokemonNameArray(): Promise<AllPokemonResponseArray> {
   try {
     const response = await axios.get(
       "https://pokeapi.co/api/v2/pokemon?limit=1500",
     );
 
-    const filteredResults: AllPokemonArray = response.data.results.filter(
+    const filteredResults: AllPokemonResponseArray = response.data.results.filter(
       (pokemon: { name: string; url: string }) => !pokemon.name.includes("-"),
     );
 

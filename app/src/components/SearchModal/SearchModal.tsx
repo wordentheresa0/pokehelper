@@ -1,13 +1,17 @@
 import "reactjs-popup/dist/index.css";
-import type { AllPokemonArray } from "../../models/AllPokemonArray";
+import "./SearchModal.css";
+import type { AllPokemonResponseArray } from "../../models/AllPokemonResponseArray";
 import { useState } from "react";
 
 interface SearchModalProps {
-  data: AllPokemonArray;
+  data: AllPokemonResponseArray;
 }
 
 export default function SearchModal(props: SearchModalProps) {
-  console.log(props);
+  // TODO:
+  // - track selected pokemon
+  // - get sprite of selected pokemon
+  // - ui
 
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState<
@@ -27,38 +31,37 @@ export default function SearchModal(props: SearchModalProps) {
       pokemon.name.toLowerCase().startsWith(inputValue.toLowerCase()),
     );
 
-    // Limit to top 10 matches
     setSuggestions(filtered.slice(0, 10));
   };
 
   return (
     <>
-      <h2>search modal</h2>
-      <input type="text" value={value} onChange={handleChange} />
-
-      {/* Suggestions Dropdown */}
-      {suggestions.length > 0 && (
-        <ul
-          style={{ border: "1px solid #ccc", padding: "0", marginTop: "5px" }}
-        >
-          {suggestions.map((pokemon) => (
-            <li
-              key={pokemon.name}
-              style={{
-                listStyle: "none",
-                padding: "8px",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setValue(pokemon.name);
-                setSuggestions([]);
-              }}
-            >
-              {pokemon.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="search-modal-container">
+        <h2>search modal</h2>
+        <input type="text" value={value} onChange={handleChange} />
+        {suggestions.length > 0 && (
+          <div className="scrollable-container">
+            <ul>
+              {suggestions.map((pokemon) => (
+                <li
+                  key={pokemon.name}
+                  style={{
+                    listStyle: "none",
+                    padding: "8px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    setValue(pokemon.name);
+                    setSuggestions([]);
+                  }}
+                >
+                  {pokemon.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </>
   );
 }

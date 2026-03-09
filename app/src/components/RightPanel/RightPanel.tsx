@@ -6,11 +6,24 @@ import { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import SearchModal from "../SearchModal/SearchModal";
 import { getPokemonNameArray } from "../../api/PokemonAPICalls";
-import type { AllPokemonArray } from "../../models/AllPokemonArray";
+import type { AllPokemonResponseArray } from "../../models/AllPokemonResponseArray";
+import type { PokemonDisplayData } from "../../models/PokemonDisplayData";
 
 export default function RightPanel() {
-  const [allPokemonArr, setAllPokemonArr] = useState<AllPokemonArray>([]);
+  const [allPokemonArr, setAllPokemonArr] = useState<AllPokemonResponseArray>([]);
   const [open, setOpen] = useState(false);
+  const [displayPokemonArr, setDisplayPokemonArr] = useState<PokemonDisplayData[]>(
+    new Array(6).fill({ dipslayPokemon: false, spriteUrl: "" })
+  );
+
+  // FOR TESTING PURPOSES, DELETE LATER
+  useEffect(() => {
+    console.log("displayPokemonArr: ", displayPokemonArr);
+  }, [displayPokemonArr]);
+  
+  useEffect(() => {
+    console.log("allPokemonArr: ", allPokemonArr);
+  }, [allPokemonArr]);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -23,22 +36,20 @@ export default function RightPanel() {
     };
 
     fetchPokemon();
-    console.log(allPokemonArr);
   }, []);
 
   return (
     <>
+
       <div className="right-red-square">
-        <PlusButton onClick={() => setOpen(true)} />
-        <PlusButton onClick={() => setOpen(true)} />
-        <PlusButton onClick={() => setOpen(true)} />
-        <PlusButton onClick={() => setOpen(true)} />
-        <PlusButton onClick={() => setOpen(true)} />
-        <PokemonCircle />
+        {displayPokemonArr.map((pokemonDisplayData) => {
+          if (pokemonDisplayData.displayPokemon) return <PokemonCircle spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png"/>;
+          else return <PlusButton onClick={() => setOpen(true)} />;
+        })}
       </div>
 
       <Popup open={open} onClose={() => setOpen(false)} modal>
-        <SearchModal data={allPokemonArr}/>
+        <SearchModal data={allPokemonArr} />
       </Popup>
     </>
   );

@@ -1,0 +1,17 @@
+.search-modal-container {
+  width: 80vh;
+  height: 60vh;
+}
+
+.scrollable-container {
+  overflow-y: auto;
+  /* Add a background color to visualize the child container */
+  background-color: coral;
+}
+
+ul {
+  width: 80vh;
+  height: 60vh;
+  border: 1px solid #a73838;
+  padding: "0";
+}
