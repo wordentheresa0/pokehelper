@@ -10,20 +10,20 @@ import type { AllPokemonResponseArray } from "../../models/AllPokemonResponseArr
 import type { PokemonDisplayData } from "../../models/PokemonDisplayData";
 
 export default function RightPanel() {
-  const [allPokemonArr, setAllPokemonArr] = useState<AllPokemonResponseArray>([]);
-  const [open, setOpen] = useState(false);
-  const [displayPokemonArr, setDisplayPokemonArr] = useState<PokemonDisplayData[]>(
-    new Array(6).fill({ dipslayPokemon: false, spriteUrl: "" })
+  const [allPokemonArr, setAllPokemonArr] = useState<AllPokemonResponseArray>(
+    [],
   );
-
-  // FOR TESTING PURPOSES, DELETE LATER
-  useEffect(() => {
-    console.log("displayPokemonArr: ", displayPokemonArr);
-  }, [displayPokemonArr]);
-  
-  useEffect(() => {
-    console.log("allPokemonArr: ", allPokemonArr);
-  }, [allPokemonArr]);
+  const [open, setOpen] = useState(false);
+  const [displayPokemonArr, setDisplayPokemonArr] = useState<
+    PokemonDisplayData[]
+  >(
+    new Array(6).fill({
+      name: "",
+      displayPokemon: false,
+      spriteUrl: "",
+      moves: [],
+    }),
+  );
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -40,11 +40,13 @@ export default function RightPanel() {
 
   return (
     <>
-
       <div className="right-red-square">
-        {displayPokemonArr.map((pokemonDisplayData) => {
-          if (pokemonDisplayData.displayPokemon) return <PokemonCircle spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png"/>;
-          else return <PlusButton onClick={() => setOpen(true)} />;
+        {displayPokemonArr.map((pokemonDisplayData, index) => {
+          if (pokemonDisplayData.displayPokemon)
+            return (
+              <PokemonCircle spriteUrl="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/405.png" />
+            );
+          else return <PlusButton key={index} onClick={() => setOpen(true)} />;
         })}
       </div>
 
